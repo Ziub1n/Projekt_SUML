@@ -1,62 +1,62 @@
 # Workplace Message Checker
 
-A machine learning application that analyses whether a message is appropriate to send in a professional work environment.
+Aplikacja uczenia maszynowego, która analizuje czy wiadomość jest odpowiednia do wysłania w środowisku pracy.
 
-## What it does
+## Co robi aplikacja
 
-Paste any message into the app — it will instantly classify it as **Appropriate** or **Inappropriate** for the workplace, along with a confidence score.
+Wklej dowolną wiadomość do aplikacji — natychmiast sklasyfikuje ją jako **Odpowiednią** lub **Nieodpowiednią** dla środowiska pracy wraz z wynikiem pewności predykcji.
 
-The model was trained on the [Jigsaw Toxic Comment Classification](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge) dataset (~159k labelled messages).
+Model został wytrenowany na zbiorze danych [Jigsaw Toxic Comment Classification](https://www.kaggle.com/competitions/jigsaw-toxic-comment-classification-challenge) (~159 tys. oznaczonych wiadomości).
 
-## Project structure
+## Struktura projektu
 
 ```
 workplace-message-checker/
 ├── data/
-│   ├── loader.py        # data loading and preprocessing
+│   ├── loader.py        # wczytywanie i przetwarzanie danych
 │   └── raw/
-│       └── train.csv    # training dataset (Jigsaw)
+│       └── train.csv    # zbiór treningowy (Jigsaw)
 ├── model/
-│   ├── train.py         # model training (TF-IDF + Logistic Regression)
-│   └── predict.py       # inference on new messages
+│   ├── train.py         # trenowanie modelu (TF-IDF + Regresja Logistyczna)
+│   └── predict.py       # predykcja na nowych wiadomościach
 ├── app/
-│   └── main.py          # Streamlit web application
-├── models/              # saved model files (created on first run)
+│   └── main.py          # aplikacja webowa Streamlit
+├── models/              # zapisane pliki modelu (tworzone przy pierwszym uruchomieniu)
 ├── requirements.txt
 └── README.md
 ```
 
-## Requirements
+## Wymagania
 
 - Python 3.10+
-- The training data file must be placed at `data/raw/train.csv`
+- Plik z danymi treningowymi umieszczony w `data/raw/train.csv`
 
-## Installation
+## Instalacja
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Running the app
+## Uruchomienie aplikacji
 
-Run from the **project root** directory:
+Uruchom z **głównego katalogu projektu**:
 
 ```bash
 streamlit run app/main.py
 ```
 
-The model will be trained automatically on the first launch (takes ~1 minute). Subsequent launches load the saved model instantly.
+Przy pierwszym uruchomieniu model zostanie automatycznie wytrenowany (ok. 1 minuta). Kolejne uruchomienia wczytują zapisany model natychmiastowo.
 
-## Training the model manually (optional)
+## Ręczne trenowanie modelu (opcjonalnie)
 
 ```bash
 python -m model.train
 ```
 
-## Tech stack
+## Użyte technologie
 
-| Layer | Technology |
-|-------|-----------|
-| Data  | pandas, scikit-learn |
-| Model | TF-IDF + Logistic Regression (scikit-learn) |
-| App   | Streamlit |
+| Warstwa | Technologia |
+|---------|-------------|
+| Dane    | pandas, scikit-learn |
+| Model   | TF-IDF + Regresja Logistyczna (scikit-learn) |
+| Aplikacja | Streamlit |
