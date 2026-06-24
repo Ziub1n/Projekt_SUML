@@ -94,4 +94,4 @@ python -m model.train
 
 ## Autorzy
 
-- Ziub1n
+- Ziub1n (s28486)
