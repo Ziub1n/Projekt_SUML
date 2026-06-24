@@ -8,8 +8,7 @@ import streamlit as st
 # allow imports from project root when running via `streamlit run app/main.py`
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from model.predict import load_model, predict_message
-from model.train import train_model, MODEL_PATH
+from model.predict import load_model, predict_message, MODEL_PATH
 
 
 # ── page config ──────────────────────────────────────────────────────────────
@@ -24,10 +23,7 @@ st.set_page_config(
 
 @st.cache_resource(show_spinner=False)
 def get_model():
-    """Load model from disk, training it first if not present."""
-    if not os.path.exists(MODEL_PATH):
-        with st.spinner("Training model for the first time — this may take a minute..."):
-            train_model(MODEL_PATH)
+    """Load the pre-trained model from disk."""
     return load_model(MODEL_PATH)
 
 
